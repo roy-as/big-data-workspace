@@ -1,0 +1,52 @@
+server:
+  port: 80
+
+logging:
+  config: classpath:logback-boot.xml
+
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    druid:
+      first:
+        driver-class-name: org.apache.phoenix.jdbc.PhoenixDriver
+        url: jdbc:phoenix:node1,node2,node3:2181
+        username:
+        password:
+      second:
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowMultiQueries=true
+        username: root
+        password: 123qwe
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      #validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        filter:
+          stat:
+            log-slow-sql: true
+            slow-sql-millis: 1000
+            merge-sql: false
+
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.as.entity
+
+sql:
+  multi-query:
+    datasource: second

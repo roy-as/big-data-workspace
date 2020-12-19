@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.as.dao.TeacherDao">
+    <resultMap id="BaseResultMap" type="com.as.entity.Teacher">
+        <result column="ID" jdbcType="VARCHAR" property="id"/>
+        <result column="NAME" jdbcType="VARCHAR" property="name"/>
+        <result column="AGE" jdbcType="INTEGER" property="age"/>
+    </resultMap>
+
+    <select id="queryAll" resultMap="BaseResultMap">
+        select * from TEACHER
+    </select>
+    <insert id="insert" parameterType="com.as.entity.Teacher">
+        insert into TEACHER values( #{id},#{name},#{age})
+    </insert>
+
+</mapper>

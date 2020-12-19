@@ -1,0 +1,19 @@
+server:
+  port: 80
+
+logging:
+  config: classpath:logback-boot.xml
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.apache.phoenix.jdbc.PhoenixDriver
+    url: jdbc:phoenix:node1,node2,node3:2181
+    username:
+    password:
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.as.entity
