@@ -1,0 +1,10 @@
+spring:
+  elasticsearch:
+    rest:
+      uris: http://node1:9200,http://node2:9200,http://node3:9200
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.apache.phoenix.jdbc.PhoenixDriver
+    url: jdbc:phoenix:node1,node2,node3:2181
+    username:
+    password:
